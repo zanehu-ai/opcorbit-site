@@ -32,6 +32,14 @@ function CtaRow({ primary, secondary }: { primary: string; secondary: string | n
   );
 }
 
+function extraSectionId(title: string): string {
+  const slug = title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+  return `extra-${slug || "section"}`;
+}
+
 function PricingList({ items, pricesOmitted }: { items: string[]; pricesOmitted: boolean }) {
   return (
     <div data-prices={pricesOmitted ? "off" : "on"}>
@@ -122,16 +130,19 @@ export function OfferLanding({ meta, copy }: { meta: OfferMeta; copy: ResolvedOf
         </section>
       ) : null}
 
-      {copy.extras?.map((extra) => (
-        <section key={extra.title} aria-labelledby={`extra-${extra.title}`} className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6">
-          <h2 id={`extra-${extra.title}`} className="text-2xl font-semibold tracking-tight">
-            {extra.title}
-          </h2>
-          <p className="mt-4 max-w-3xl leading-7">
-            <RichText text={extra.body} />
-          </p>
-        </section>
-      ))}
+      {copy.extras?.map((extra) => {
+        const sectionId = extraSectionId(extra.title);
+        return (
+          <section key={extra.title} aria-labelledby={sectionId} className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6">
+            <h2 id={sectionId} className="text-2xl font-semibold tracking-tight">
+              {extra.title}
+            </h2>
+            <p className="mt-4 max-w-3xl leading-7">
+              <RichText text={extra.body} />
+            </p>
+          </section>
+        );
+      })}
 
       <section aria-labelledby="pricing-title" className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6">
         <h2 id="pricing-title" className="text-2xl font-semibold tracking-tight">
@@ -163,13 +174,10 @@ export function OfferLanding({ meta, copy }: { meta: OfferMeta; copy: ResolvedOf
       <Separator className="mx-auto max-w-6xl" />
 
       <section id="contact" aria-labelledby="contact-title" className="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6">
-        <h2 id="contact-title" className="text-2xl font-semibold tracking-tight">
-          {copy.finalPrimary}
+        <h2 id="contact-title" className="sr-only">
+          Contact
         </h2>
-        {finalSecondary ? <p className="mt-3 text-lg leading-8">{finalSecondary}</p> : null}
-        <div className="mt-6">
-          <CtaRow primary={copy.finalPrimary} secondary={finalSecondary} />
-        </div>
+        <CtaRow primary={copy.finalPrimary} secondary={finalSecondary} />
         <p className="mt-5 leading-7">
           <RichText text={copy.contactNote} />
         </p>

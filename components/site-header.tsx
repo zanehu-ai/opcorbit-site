@@ -1,6 +1,17 @@
+"use client";
+
 import Link from "next/link";
+import { TopNavigation, type NavigationLinkProps } from "@zanehu-ai/x-ui";
 import { AppearanceControl } from "@/components/appearance-control";
 import { offerList, type OfferSlug } from "@/lib/site";
+
+function OfferLink({ to, className, children, "aria-current": current }: NavigationLinkProps) {
+  return (
+    <Link href={to} className={className} aria-current={current}>
+      {children}
+    </Link>
+  );
+}
 
 export function SiteHeader({ current }: { current?: OfferSlug }) {
   return (
@@ -9,25 +20,16 @@ export function SiteHeader({ current }: { current?: OfferSlug }) {
         <Link href="/" className="text-lg font-semibold tracking-tight">
           OpcOrbit
         </Link>
-        <nav aria-label="Offers" className="flex flex-wrap items-center gap-1">
-          {offerList.map((offer) => {
-            const active = current === offer.slug;
-            return (
-              <Link
-                key={offer.slug}
-                href={offer.path}
-                aria-current={active ? "page" : undefined}
-                className={`inline-flex min-h-11 items-center rounded-md px-3 text-sm font-medium ${
-                  active
-                    ? "bg-[var(--x-ui-muted)] text-[color:var(--x-ui-fg)]"
-                    : "text-[color:var(--x-ui-muted-fg)] hover:text-[color:var(--x-ui-fg)]"
-                }`}
-              >
-                {offer.nav}
-              </Link>
-            );
-          })}
-        </nav>
+        <TopNavigation
+          activeId={current}
+          ariaLabel="Offers"
+          items={offerList.map((offer) => ({
+            id: offer.slug,
+            label: offer.nav,
+            to: offer.path,
+          }))}
+          LinkComponent={OfferLink}
+        />
         <div className="ml-auto">
           <AppearanceControl />
         </div>

@@ -25,6 +25,7 @@ import {
   creativeNeed,
   creativeNotAFit,
   creativeSamples,
+  creativeSamplesIntro,
   creativeSteps,
   creativeWho,
   demoLabel,
@@ -57,6 +58,7 @@ export function CreativeLanding() {
         <h2 id="samples-title" className="text-2xl font-semibold tracking-tight">
           Concept samples
         </h2>
+        <p className="mt-4 max-w-3xl leading-7">{creativeSamplesIntro}</p>
         <ul className="mt-6 grid items-start gap-6 md:grid-cols-3">
           {creativeSamples.map((sample) => (
             <li key={sample.src}>
@@ -76,6 +78,13 @@ export function CreativeLanding() {
                         {demoLabel}
                       </Badge>
                       <p className="mt-3 text-sm leading-6 text-[color:var(--x-ui-muted-fg)]">{sample.name}</p>
+                      {sample.eyebrow ? (
+                        <p className="mt-3 text-xs font-semibold tracking-wide">{sample.eyebrow}</p>
+                      ) : null}
+                      <h3 className="mt-3 text-base font-semibold leading-6">{sample.headline}</h3>
+                      <p className="mt-2 leading-7">{sample.body}</p>
+                      {sample.bullets ? <p className="mt-2 leading-7">{sample.bullets}</p> : null}
+                      <p className="mt-3 text-sm font-medium">{sample.cta}</p>
                     </figcaption>
                   </CardContent>
                 </Card>

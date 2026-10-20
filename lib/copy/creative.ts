@@ -2,12 +2,32 @@ import type { Faq } from "@/lib/copy/types";
 
 export const demoLabel = "Demo creative — fictional brand";
 
-export const creativeSamples = [
+export const creativeSamplesIntro =
+  "Concept samples for Quillfen, a fictional brand. Each image is labelled “Demo creative — fictional brand” and is not client work.";
+
+export type CreativeSample = {
+  src: string;
+  width: number;
+  height: number;
+  name: string;
+  alt: string;
+  headline: string;
+  body: string;
+  cta: string;
+  eyebrow?: string;
+  bullets?: string;
+};
+
+export const creativeSamples: readonly CreativeSample[] = [
   {
     src: "/samples/01_meta_feed_1080x1080_painpoint_1600w.webp",
     width: 1600,
     height: 1600,
     name: "Meta feed · 1080×1080",
+    headline: "Lukewarm water by noon?",
+    body: "Double-wall vacuum insulation keeps it cold from your first meeting to your last mile.",
+    bullets: "Leak-resistant bamboo cap · Matte powder-coat grip · Fits standard cup holders",
+    cta: "Stay cold →",
     alt: "Demo ad for fictional brand Quillfen: a sage-green insulated bottle with a bamboo cap on a cream background, headline \"Lukewarm water by noon?\"",
   },
   {
@@ -15,6 +35,10 @@ export const creativeSamples = [
     width: 1600,
     height: 2844,
     name: "Story · 1080×1920",
+    eyebrow: "MADE FOR THE LONG WAY UP",
+    headline: "The bottle you reach for first.",
+    body: "One bottle. Trailhead to tailgate.",
+    cta: "Find yours →",
     alt: "Demo story ad for fictional brand Quillfen: illustrated sage-green bottle on a mountain overlook at sunset, headline \"The bottle you reach for first.\"",
   },
   {
@@ -22,9 +46,12 @@ export const creativeSamples = [
     width: 1600,
     height: 2844,
     name: "TikTok cover · 1080×1920",
+    headline: "Left it in a hot car. Still ice inside.",
+    body: "Cold-holding by design: double-wall steel + sealed cap",
+    cta: "Watch the test",
     alt: "Demo TikTok cover for fictional brand Quillfen: illustrated sage-green bottle on a car dashboard with ice cubes above it, hook \"Left it in a hot car. Still ice inside.\"",
   },
-] as const;
+];
 
 export const creativeWho = [
   "Shopify and DTC brands already running Meta (Facebook, Instagram) or TikTok ads",
@@ -58,7 +85,7 @@ export const creativeNeed =
 export const creativeDont = "Media buying, campaign setup, performance guarantees, filmed UGC, logos or websites.";
 
 export const creativeMade = [
-  "A one-person company produces creatives with AI tools and agents. [To confirm: I review every batch before it's delivered.]",
+  "A one-person company produces creatives with AI tools and agents. [To confirm: The founder reviews every batch before it's delivered.]",
   "China-based, serving clients async in their time zone.",
   "The samples on this page are labelled “Demo creative — fictional brand”, not client work. We don't have client results to show yet, and we won't make any up.",
 ];
@@ -78,8 +105,7 @@ export const creativeFaqs: Faq[] = [
   },
   {
     question: "Where are you based?",
-    answer:
-      "China-based, serving clients async in their time zone. Briefs, deliveries and feedback follow your working day, and calls are booked at a time that suits you.",
+    answer: "China-based, serving clients async in their time zone.",
   },
   {
     question: "How do I pay?",
