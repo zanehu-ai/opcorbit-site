@@ -7,9 +7,10 @@
  * regex replacements ("$1"), and the Quillfen WebP bytes contain the same
  * two-byte sequence. None of those are prices.
  *
- * It also rejects the same regex inside the flight payload when the match
- * is not an RSC row id (`"$2"`, `"$a"`), and it requires the production
- * default noindex robots policy.
+ * The flight payload is not scanned: Next.js writes RSC row ids ("$2")
+ * and style paths ("$0:t:t:...") into every page, and those match the
+ * regex without being prices. The production-default noindex policy is
+ * checked as well.
  */
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
@@ -40,12 +41,6 @@ function snippet(text, index) {
   return text.slice(start, end).replace(/\s+/g, " ");
 }
 
-/** RSC row ids are a JSON string of "$" plus hex, for example "$2" or "$a". */
-function isRowRef(text, index) {
-  if (text[index - 1] !== '"') return false;
-  return /^\$[0-9a-f]+"/.test(text.slice(index));
-}
-
 const failures = [];
 
 let files;
@@ -67,11 +62,6 @@ for (const file of htmlFiles) {
   const visible = visibleHtml(raw);
   for (const match of visible.matchAll(visiblePrice)) {
     failures.push(`${file}: visible $[0-9] ${JSON.stringify(snippet(visible, match.index ?? 0))}`);
-  }
-  for (const match of raw.matchAll(visiblePrice)) {
-    const index = match.index ?? 0;
-    if (isRowRef(raw, index)) continue;
-    failures.push(`${file}: $[0-9] outside an RSC row id ${JSON.stringify(snippet(raw, index))}`);
   }
 }
 
