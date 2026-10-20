@@ -16,7 +16,9 @@ Pages are draft copy. Every `[To confirm]` / `[待确认]` marker stays visible.
 
 `lib/site.ts` is the registry (nav label, hostname, canonical, title, description). Page bodies live in `lib/copy/`. Shared chrome is `components/page-frame.tsx` (DRAFT banner, header, footer). Each route is `app/<slug>/page.tsx`.
 
-The header links are path links on this shared preview (`/dev/`, and so on). Canonicals and the sitemap point at the future subdomains. `app/robots.ts` disallows all crawling while the site is a preview. Pages also send `noindex`.
+The header uses x-ui `TopNavigation` (`0.2.0-rc.0`) with path links on this shared preview (`/dev/`, and so on). Canonicals and the sitemap point at the future subdomains.
+
+Indexing follows the build type. `NEXT_PUBLIC_SITE_BUILD=preview` (`npm run build:preview`) always sends `noindex` and `robots.txt` disallows `/`. A production build (`npm run build`, or `NEXT_PUBLIC_SITE_BUILD` unset) does the same until launch. Set `NEXT_PUBLIC_ALLOW_INDEX=true` on a production build only when the site should be indexed. A preview build ignores that flag.
 
 ## How to add a page
 
@@ -38,22 +40,21 @@ npm run build           # prices off
 npm run build:preview   # NEXT_PUBLIC_SHOW_PRICES=true
 ```
 
-See `.env.example`. CI's build step sets the flag to `true`. A Cloudflare Pages production environment must leave it unset. A Pages preview environment should set `NEXT_PUBLIC_SHOW_PRICES=true`.
+See `.env.example`. CI runs `npm run build` with prices off, then fails if `\$[0-9]` appears in the visible HTML under `out/`. It then runs `npm run build:preview`, which sets `NEXT_PUBLIC_SHOW_PRICES=true` and `NEXT_PUBLIC_SITE_BUILD=preview`. A Cloudflare Pages production environment must leave the price flag unset. A Pages preview environment should set `NEXT_PUBLIC_SHOW_PRICES=true` and `NEXT_PUBLIC_SITE_BUILD=preview`.
+
+A raw `grep -R -E '\$[0-9]' out` also matches Next.js RSC row ids (`$2`), minified regex replacements (`$1`), and bytes inside the WebP samples. `scripts/check-prices-off.mjs` applies that regex to HTML with `script` and `style` removed, and rejects longer price-shaped leaks in the flight payload.
 
 Lines that are only a dollar amount disappear when the flag is off. Lines that mix an amount with a term keep the term and drop the amount. `[To confirm: price]` on the support page is a marker, not a number, so it stays either way.
 
 ## x-ui
 
-The UI is `@zanehu-ai/x-ui@0.2.0-rc.0` from GitHub Packages (not the public npm registry). `.npmrc` sends that scope to `https://npm.pkg.github.com` and reads the token from `NODE_AUTH_TOKEN`. The token is not committed.
+The UI is `@zanehu-ai/x-ui@0.2.0-rc.0`. The published package lives on GitHub Packages, not the public npm registry. This environment cannot download it: the registry responds `403` with `Permission installation not allowed to Read organization package`. CI therefore does not call the registry.
+
+`vendor/zanehu-ai-x-ui-0.2.0-rc.0.tgz` is `npm pack` of the public git tag `v0.2.0-rc.0` (`26428c97a7d930642b83bb5e655a0c977c8ce747`), which already contains `dist/`. `package-lock.json` includes that tarball, and CI installs with `npm ci`. `.npmrc` still points the `@zanehu-ai` scope at `https://npm.pkg.github.com` and reads `NODE_AUTH_TOKEN`, for a later switch back to the registry. The token is not committed.
 
 ```bash
-export NODE_AUTH_TOKEN="$GH_PACKAGES_TOKEN"   # read:packages, not printed
-npm install
+npm ci
 ```
-
-CI maps `NODE_AUTH_TOKEN` from the Actions secret `GH_PACKAGES_TOKEN`.
-
-The committed lockfile lists the public dependencies. `@zanehu-ai/x-ui` is not in that lockfile yet: downloading it needs the token above. The first authenticated `npm install` adds the package to `package-lock.json`. CI uses `npm install` (not `npm ci`) for that reason.
 
 x-ui `0.2.0-rc.0` has no OpcOrbit brand theme and no `data-brand` attribute. This site uses the library default: `UIThemeProvider` with light, dark, and system appearance, and no palette overrides. A theme is not defined in this repo.
 
@@ -88,6 +89,6 @@ Do not attach `dev.opcorbit.com`, `outbound.opcorbit.com`, `creative.opcorbit.co
 
 | Name | Where | Why |
 | --- | --- | --- |
-| `GH_PACKAGES_TOKEN` | GitHub Actions secret, and `NODE_AUTH_TOKEN` locally | Install `@zanehu-ai/x-ui` from GitHub Packages. `read:packages` on `zanehu-ai/x-ui`. |
+| `GH_PACKAGES_TOKEN` | Not used by CI while x-ui is vendored | Only if the dependency moves back to GitHub Packages. `read:packages` on `zanehu-ai/x-ui`, mapped to `NODE_AUTH_TOKEN`. |
 | `CLOUDFLARE_API_TOKEN` | Not used by CI | Only if a Pages preview is created later. |
 | `CLOUDFLARE_ACCOUNT_ID` | Not used by CI | Only if a Pages preview is created later. |

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { robotsDirective } from "@/lib/indexing";
 import type { OfferMeta } from "@/lib/site";
 
 export function offerMetadata(offer: OfferMeta): Metadata {
@@ -8,7 +9,7 @@ export function offerMetadata(offer: OfferMeta): Metadata {
     title: offer.title,
     description: offer.description,
     alternates: { canonical: offer.canonical },
-    robots: { index: false, follow: false },
+    robots: robotsDirective(),
     openGraph: {
       title: offer.title,
       description: offer.description,

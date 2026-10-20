@@ -9,21 +9,16 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: 22
           cache: npm
-          registry-url: https://npm.pkg.github.com
-          scope: "@zanehu-ai"
 
       - name: Install
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
-        run: npm install
+        run: npm ci
 
       - name: Lint
         run: npm run lint
@@ -31,7 +26,20 @@ jobs:
       - name: Typecheck
         run: npm run typecheck
 
-      - name: Build preview
-        env:
-          NEXT_PUBLIC_SHOW_PRICES: "true"
+      - name: Build with prices off
         run: npm run build
+
+      # /\$[0-9]/ on visible HTML. A raw grep of out/ also matches RSC row
+      # ids, minified "$1" replacements, and WebP bytes. See the script.
+      - name: No dollar amounts in the prices-off export
+        run: node scripts/check-prices-off.mjs
+
+      - name: Build preview
+        run: npm run build:preview
+
+      - name: Preview build stays noindex
+        run: |
+          grep -q 'Disallow: /' out/robots.txt
+          grep -q 'noindex' out/index.html
+          grep -q 'noindex' out/dev/index.html
+          grep -q 'noindex' out/creative/index.html

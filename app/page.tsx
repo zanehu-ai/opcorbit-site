@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { HomeLanding } from "@/components/home-landing";
+import { robotsDirective } from "@/lib/indexing";
 
 export const metadata: Metadata = {
   title: "OpcOrbit preview",
   description: "Preview directory for draft OpcOrbit landing pages. Not live.",
-  robots: { index: false, follow: false },
+  robots: robotsDirective(),
   openGraph: {
     title: "OpcOrbit preview",
     description: "Preview directory for draft OpcOrbit landing pages. Not live.",

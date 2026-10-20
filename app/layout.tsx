@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import "@zanehu-ai/x-ui/dist/theme/styles.css";
 import { ThemeShell } from "@/components/theme-shell";
+import { robotsDirective } from "@/lib/indexing";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   },
   description: "Preview-only OpcOrbit landing pages. Not live.",
   applicationName: "OpcOrbit",
-  robots: { index: false, follow: false },
+  robots: robotsDirective(),
   openGraph: {
     siteName: "OpcOrbit",
     type: "website",
