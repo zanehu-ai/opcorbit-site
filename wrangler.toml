@@ -1,0 +1,25 @@
+# Preview-only Cloudflare Pages config.
+# Do not attach custom domains. DNS and a production deploy wait for Albert's execute.
+#
+# This file does not deploy anything. Creating a Pages project needs credentials
+# that are not in this repository:
+# - CLOUDFLARE_API_TOKEN with Cloudflare Pages edit permission
+# - CLOUDFLARE_ACCOUNT_ID
+#
+# Pages settings, once a project exists:
+# - Build command: npm run build
+# - Build output directory: out
+# - Node.js: 22
+# - Preview environment: NEXT_PUBLIC_SHOW_PRICES=true
+# - Production environment: leave NEXT_PUBLIC_SHOW_PRICES unset
+#
+# The static export serves one path per future subdomain:
+# - dev.opcorbit.com      -> /dev/
+# - outbound.opcorbit.com -> /outbound/
+# - creative.opcorbit.com -> /creative/
+# - support.opcorbit.com  -> /support/
+# Host-based rewrites are not active. See cloudflare/host-routes.example.js.
+
+name = "opcorbit-site"
+pages_build_output_dir = "out"
+compatibility_date = "2026-10-20"
