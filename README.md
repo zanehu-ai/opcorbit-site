@@ -42,7 +42,7 @@ npm run build:preview   # NEXT_PUBLIC_SHOW_PRICES=true
 
 See `.env.example`. CI runs `npm run build` with prices off, then fails if `\$[0-9]` appears in the visible HTML under `out/`. It then runs `npm run build:preview`, which sets `NEXT_PUBLIC_SHOW_PRICES=true` and `NEXT_PUBLIC_SITE_BUILD=preview`. A Cloudflare Pages production environment must leave the price flag unset. A Pages preview environment should set `NEXT_PUBLIC_SHOW_PRICES=true` and `NEXT_PUBLIC_SITE_BUILD=preview`.
 
-A raw `grep -R -E '\$[0-9]' out` also matches Next.js RSC row ids (`$2`), minified regex replacements (`$1`), and bytes inside the WebP samples. `scripts/check-prices-off.mjs` applies that regex to HTML with `script` and `style` removed, and rejects longer price-shaped leaks in the flight payload.
+A raw `grep -R -E '\$[0-9]' out` also matches Next.js RSC row ids (`$2`), style paths (`$0:t:t:...`), minified regex replacements (`$1`), and bytes inside the WebP samples. `scripts/check-prices-off.mjs` applies that regex to HTML with `script` and `style` removed.
 
 Lines that are only a dollar amount disappear when the flag is off. Lines that mix an amount with a term keep the term and drop the amount. `[To confirm: price]` on the support page is a marker, not a number, so it stays either way.
 
