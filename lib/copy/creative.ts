@@ -113,4 +113,11 @@ export const creativeFaqs: Faq[] = [
   },
 ];
 
+/** Bare mailto until Albert picks the address. Do not put a mailbox here. */
+export const creativeContactHref = "mailto:";
+
+export const creativeContactCta = "Email us [To confirm]";
+
+export const creativeContactNote = "[To confirm: email address]. Booking link later.";
+
 export const creativeFooter = "OpcOrbit · creative.opcorbit.com · Founded by Zane Hu";
