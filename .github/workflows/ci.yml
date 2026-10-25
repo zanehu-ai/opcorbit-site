@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Build with prices off
+        run: npm run build
+
+      # /\$[0-9]/ on visible HTML. A raw grep of out/ also matches RSC row
+      # ids, minified "$1" replacements, and WebP bytes. See the script.
+      - name: No dollar amounts in the prices-off export
+        run: node scripts/check-prices-off.mjs
+
+      - name: Build preview
+        run: npm run build:preview
+
+      - name: Preview build stays noindex
+        run: |
+          grep -q 'Disallow: /' out/robots.txt
+          grep -q 'noindex' out/index.html
+          grep -q 'noindex' out/dev/index.html
+          grep -q 'noindex' out/creative/index.html
