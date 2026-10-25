@@ -52,7 +52,7 @@ function PricingList({ items, pricesOmitted }: { items: string[]; pricesOmitted:
       </ul>
       {pricesOmitted ? (
         <p className="mt-4 text-sm leading-6 text-[color:var(--x-ui-muted-fg)]">
-          Dollar amounts are hidden in this build because NEXT_PUBLIC_SHOW_PRICES is not true.
+          Pricing details will be published once confirmed.
         </p>
       ) : null}
     </div>
@@ -70,7 +70,7 @@ export function OfferLanding({ meta, copy }: { meta: OfferMeta; copy: ResolvedOf
       footer={<RichText text={copy.footer} />}
     >
       <section aria-labelledby="hero-title" className="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
-        <p className="text-sm font-medium text-[color:var(--x-ui-muted-fg)]">{meta.hostname}</p>
+        <p className="text-sm font-medium text-[color:var(--x-ui-muted-fg)]">OpcOrbit {meta.nav}</p>
         <h1 id="hero-title" className="mt-3 max-w-4xl text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
           {meta.headline}
         </h1>

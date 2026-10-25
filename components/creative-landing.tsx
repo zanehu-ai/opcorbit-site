@@ -41,7 +41,7 @@ export function CreativeLanding() {
   return (
     <PageFrame current="creative" host={meta.hostname} footer={creativeFooter}>
       <section aria-labelledby="hero-title" className="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
-        <p className="text-sm font-medium text-[color:var(--x-ui-muted-fg)]">{meta.hostname}</p>
+        <p className="text-sm font-medium text-[color:var(--x-ui-muted-fg)]">OpcOrbit {meta.nav}</p>
         <h1 id="hero-title" className="mt-3 max-w-4xl text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
           {meta.headline}
         </h1>
@@ -186,7 +186,7 @@ export function CreativeLanding() {
         <h2 id="pricing-title" className="text-2xl font-semibold tracking-tight">
           Pricing
         </h2>
-        <p className="mt-4 leading-7">In USD, paid via PayPal. Prices TBD from RevOps 10-22.</p>
+        <p className="mt-4 leading-7">In USD, paid via PayPal. Pricing details will be published once confirmed.</p>
       </section>
 
       <section aria-labelledby="faq-title" className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6">

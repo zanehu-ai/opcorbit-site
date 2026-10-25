@@ -3,17 +3,22 @@ import type { ReactNode } from "react";
 import "@zanehu-ai/x-ui/dist/theme/styles.css";
 import { ThemeShell } from "@/components/theme-shell";
 import { robotsDirective } from "@/lib/indexing";
+import { site } from "@/lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(site.origin),
   title: {
-    default: "OpcOrbit preview",
+    default: site.title,
     template: "%s",
   },
-  description: "Preview-only OpcOrbit landing pages. Not live.",
+  description: site.description,
   applicationName: "OpcOrbit",
   robots: robotsDirective(),
   openGraph: {
+    title: site.title,
+    description: site.description,
+    url: site.origin,
     siteName: "OpcOrbit",
     type: "website",
     locale: "en_US",

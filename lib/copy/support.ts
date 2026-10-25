@@ -38,8 +38,7 @@ export const supportCopy: OfferCopy = {
       body: "For dental, chiropractic, med-spa and similar practices, we offer a version that takes no patient data. It handles scheduling requests and general questions only (hours, location, services, published prices) and asks visitors not to enter medical details. It doesn't ask about symptoms, the reason for the visit or insurance, and hands requests to your own staff and systems.",
     },
   ],
-  pricingTitle:
-    "Pricing: Preview only, pending Albert's approval. Prices stay off any live page until Albert approves.",
+  pricingTitle: "Pricing",
   pricingItems: [
     "OpcOrbit Support monthly plan: [To confirm: price]",
     "Setup: [To confirm: setup fee]",
@@ -109,5 +108,5 @@ export const supportCopy: OfferCopy = {
   },
   contactNote: "[To confirm: booking link and intake form]",
   footer:
-    "OpcOrbit · support.opcorbit.com · Founded by Zane Hu · [To confirm: legal entity and postal address (Albert / General Counsel)]",
+    "OpcOrbit · Support · Founded by Zane Hu · [To confirm: legal entity and postal address]",
 };

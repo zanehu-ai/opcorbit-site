@@ -120,4 +120,4 @@ export const creativeContactCta = "Email us [To confirm]";
 
 export const creativeContactNote = "[To confirm: email address]. Booking link later.";
 
-export const creativeFooter = "OpcOrbit · creative.opcorbit.com · Founded by Zane Hu";
+export const creativeFooter = "OpcOrbit · Creative · Founded by Zane Hu";

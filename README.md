@@ -1,24 +1,24 @@
 # opcorbit-site
 
-Preview-only marketing site for OpcOrbit. One Next.js static export, one landing page per future subdomain. Nothing here is live: no custom domains, no DNS, and no production deploy.
+OpcOrbit's marketing website, hosted on Vercel at https://www.opcorbit.com/. One Next.js static export serves the homepage and four service pages.
 
-Pages are draft copy. Every `[To confirm]` / `[待确认]` marker stays visible. Booking links, contract terms, and unapproved prices are not invented.
+Unconfirmed business details remain explicit: every `[To confirm]` / `[待确认]` marker stays visible. Booking links, contract terms, and unapproved prices are not invented. Production pages use live-site copy; the DRAFT banner is shown only by `NEXT_PUBLIC_SITE_BUILD=preview` builds.
 
 ## Structure
 
-| Path | Future subdomain | Offer |
+| Path | Public URL | Offer |
 | --- | --- | --- |
-| `/dev/` | https://dev.opcorbit.com/ | Bet E, React and Next.js development |
-| `/outbound/` | https://outbound.opcorbit.com/ | Bet F, done-for-you outbound |
-| `/creative/` | https://creative.opcorbit.com/ | Bet A, weekly static ad creatives |
-| `/support/` | https://support.opcorbit.com/ | Bet D, AI support and lead-capture agent |
-| `/` | Preview directory only | Links to the four pages. Not a public offer. |
+| `/dev/` | https://www.opcorbit.com/dev/ | Bet E, React and Next.js development |
+| `/outbound/` | https://www.opcorbit.com/outbound/ | Bet F, done-for-you outbound |
+| `/creative/` | https://www.opcorbit.com/creative/ | Bet A, weekly static ad creatives |
+| `/support/` | https://www.opcorbit.com/support/ | Bet D, AI support and lead-capture agent |
+| `/` | https://www.opcorbit.com/ | Service overview |
 
-`lib/site.ts` is the registry (nav label, hostname, canonical, title, description). Page bodies live in `lib/copy/`. Shared chrome is `components/page-frame.tsx` (DRAFT banner, header, footer). Each route is `app/<slug>/page.tsx`.
+`lib/site.ts` is the registry (site identity, nav label, hostname, canonical, title, description). Page bodies live in `lib/copy/`. Shared chrome is `components/page-frame.tsx` (preview-only DRAFT banner, header, footer). Each route is `app/<slug>/page.tsx`.
 
-The header uses x-ui `TopNavigation` (`0.2.0-rc.0`) with path links on this shared preview (`/dev/`, and so on). Canonicals and the sitemap point at the future subdomains.
+The header uses x-ui `TopNavigation` (`0.2.0-rc.0`) with path links (`/dev/`, and so on). Canonicals, sharing URLs, images and the sitemap use the live www.opcorbit.com paths. Reserved offer hostnames remain in the registry for preview context; they are not production destinations.
 
-Indexing follows the build type. `NEXT_PUBLIC_SITE_BUILD=preview` (`npm run build:preview`) always sends `noindex` and `robots.txt` disallows `/`. A production build (`npm run build`, or `NEXT_PUBLIC_SITE_BUILD` unset) does the same until launch. Set `NEXT_PUBLIC_ALLOW_INDEX=true` on a production build only when the site should be indexed. A preview build ignores that flag.
+Indexing follows the build type. `NEXT_PUBLIC_SITE_BUILD=preview` (`npm run build:preview`) always sends `noindex` and `robots.txt` disallows `/`. Production currently keeps the same indexing policy while business details are being confirmed. Removing the preview banner does not enable indexing. Set `NEXT_PUBLIC_ALLOW_INDEX=true` on a production build only when the site should be indexed. A preview build ignores that flag.
 
 ## How to add a page
 
@@ -73,17 +73,21 @@ npm run build:preview
 
 `output: 'export'` writes the site to `out/`.
 
-## Cloudflare Pages
+## Deployment
+
+Production uses the `opcorbit-site` project in the `opcorbit` Vercel team. Build with `npm run build`, keep prices off, and deploy the tested static `out/` export through Vercel Build Output. The www.opcorbit.com CNAME is managed at Alibaba Cloud DNS. Do not change nameservers, mail records, or unrelated hostnames for a website update. The GitHub PR review and merge are separate from publishing an exact tested commit.
+
+### Legacy Cloudflare Pages configuration
 
 `wrangler.toml` names the project `opcorbit-site` and sets `pages_build_output_dir = "out"`. `public/_headers` sets basic response headers. `cloudflare/host-routes.example.js` is a sketch of future hostname rewrites. It is not deployed.
 
-A preview URL cannot be created from this repository alone. It needs:
+The Cloudflare configuration is retained as an inactive alternative. Creating a Cloudflare Pages project would need:
 
 - `CLOUDFLARE_API_TOKEN` with Cloudflare Pages edit permission
 - `CLOUDFLARE_ACCOUNT_ID`
 - someone to create the Pages project and attach this repo
 
-Do not attach `dev.opcorbit.com`, `outbound.opcorbit.com`, `creative.opcorbit.com`, `support.opcorbit.com`, or any other custom domain until Albert's execute. CI does not deploy.
+The reserved offer subdomains are not connected to this deployment. Attach or repoint additional domains only when requested. CI validates builds and does not deploy.
 
 ## Secrets
 

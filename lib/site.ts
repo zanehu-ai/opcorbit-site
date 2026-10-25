@@ -1,10 +1,16 @@
+export const site = {
+  origin: "https://www.opcorbit.com",
+  title: "OpcOrbit — Development, Outbound, Creative & AI Support",
+  description: "Frontend development, outbound sales, ad creative, and AI support for your team.",
+} as const;
+
 export const offers = {
   dev: {
     slug: "dev",
     nav: "Dev",
     hostname: "dev.opcorbit.com",
     path: "/dev/",
-    canonical: "https://dev.opcorbit.com/",
+    canonical: `${site.origin}/dev/`,
     title:
       "OpcOrbit Dev — Frontend work shipped as pull requests, for one flat monthly fee.",
     headline: "Frontend work shipped as pull requests, for one flat monthly fee.",
@@ -16,7 +22,7 @@ export const offers = {
     nav: "Outbound",
     hostname: "outbound.opcorbit.com",
     path: "/outbound/",
-    canonical: "https://outbound.opcorbit.com/",
+    canonical: `${site.origin}/outbound/`,
     title: "OpcOrbit Outbound — Outbound that starts sales conversations, run for you.",
     headline: "Outbound that starts sales conversations, run for you.",
     description:
@@ -27,13 +33,13 @@ export const offers = {
     nav: "Creative",
     hostname: "creative.opcorbit.com",
     path: "/creative/",
-    canonical: "https://creative.opcorbit.com/",
+    canonical: `${site.origin}/creative/`,
     title: "OpcOrbit Creative — Fresh ad creatives every week, built from your own product photos.",
     headline: "Fresh ad creatives every week, built from your own product photos.",
     description:
       "A monthly creative service for Shopify brands and agencies already running Meta or TikTok ads. Weekly batches of static ad concepts, sized for each placement, with editable source files you keep.",
     ogImage: {
-      url: "https://creative.opcorbit.com/samples/01_meta_feed_1080x1080_painpoint_1600w.webp",
+      url: `${site.origin}/samples/01_meta_feed_1080x1080_painpoint_1600w.webp`,
       width: 1600,
       height: 1600,
       alt: "Demo ad for fictional brand Quillfen: a sage-green insulated bottle with a bamboo cap on a cream background, headline \"Lukewarm water by noon?\"",
@@ -44,7 +50,7 @@ export const offers = {
     nav: "Support",
     hostname: "support.opcorbit.com",
     path: "/support/",
-    canonical: "https://support.opcorbit.com/",
+    canonical: `${site.origin}/support/`,
     title: "OpcOrbit Support — A support and lead-capture agent, built and run for you.",
     headline: "A support and lead-capture agent, built and run for you.",
     description:

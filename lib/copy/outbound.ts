@@ -38,7 +38,7 @@ export const outboundCopy: OfferCopy = {
       body: "Promise meetings or revenue; buy email lists; send from your main domain; blast high volumes; hide or delay opt-outs; contact anyone who has opted out.",
     },
   ],
-  pricingTitle: "Pricing: Preview only, prices stay off any live page until Albert approves.",
+  pricingTitle: "Pricing",
   pricingItems: [
     {
       priced: "OpcOrbit Outbound monthly retainer: $1,995/month for our first clients",
@@ -109,5 +109,5 @@ export const outboundCopy: OfferCopy = {
   },
   contactNote: "[To confirm: booking link and intake form]",
   footer:
-    "OpcOrbit · outbound.opcorbit.com · Founded by Zane Hu · [To confirm: legal entity and postal address (Albert / General Counsel)]",
+    "OpcOrbit · Outbound · Founded by Zane Hu · [To confirm: legal entity and postal address]",
 };

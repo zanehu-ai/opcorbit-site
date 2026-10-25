@@ -40,7 +40,7 @@ export const devCopy: OfferCopy = {
       body: "Native mobile; heavy backend or infrastructure; data migrations; payment or security-critical systems without a separate review; design from scratch (we work from your Figma or references); 24/7 on-call; hosting and third-party licence costs.",
     },
   ],
-  pricingTitle: "Pricing: Pending Albert's approval",
+  pricingTitle: "Pricing",
   pricingItems: [
     {
       priced: "OpcOrbit Dev monthly plan: $2,495/month, USD",
@@ -108,11 +108,11 @@ export const devCopy: OfferCopy = {
   ],
   finalPrimary: "Book an intro call",
   finalSecondary: {
-    priced: "Start a paid week ($500, credited to month 1; pricing pending Albert's approval)",
-    plain: "Start a paid week (credited to month 1; pricing pending Albert's approval)",
+    priced: "Start a paid week ($500, credited to month 1; pricing pending confirmation)",
+    plain: "Start a paid week (credited to month 1; pricing pending confirmation)",
   },
   contactNote: "[To confirm: booking link or form]",
   footer:
-    "OpcOrbit · dev.opcorbit.com · Founded by Zane Hu · [To confirm: legal entity and postal address (Albert / General Counsel)]",
+    "OpcOrbit · Dev · Founded by Zane Hu · [To confirm: legal entity and postal address]",
   externalLink: { label: "See x-ui", href: "https://ui.opcorbit.com" },
 };
