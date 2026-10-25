@@ -27,8 +27,8 @@ export const outboundCopy: OfferCopy = {
   stepsTitle: "How it works",
   steps: [
     "Define the target: a short onboarding call about your offer, ideal customer, regions and calendar.",
-    "Set up sending: we set up sending domains and inboxes in your name and warm them up before campaigns run. [To confirm: warm-up length, owned by CRO/RevOps] Domain and tool costs are yours, paid at cost. [To confirm: specific tools, owned by CRO/RevOps]",
-    "Approve and launch: you approve the sequences and the sending caps. [To confirm: specific caps, owned by CRO/RevOps] Our AI agents research up to 500 contacts a month from public sources, then write and send the emails and follow-ups from your domains, with a human reviewing.",
+    "Set up sending: we set up sending domains and inboxes in your name and warm them up before campaigns run. Domain and tool costs are yours, paid at cost.",
+    "Approve and launch: you approve the sequences and the sending caps. Our AI agents research up to 500 contacts a month from public sources, then write and send the emails and follow-ups from your domains, with a human reviewing.",
     "Take the conversations: we triage replies and hand interested prospects to you to book.",
     "Weekly report: contacts researched, emails sent, replies and opt-outs, with real numbers only.",
   ],
@@ -45,7 +45,7 @@ export const outboundCopy: OfferCopy = {
       plain: "",
     },
     "Includes: ideal-customer definition; up to 500 researched contacts a month; email sequences you approve, sent from your own domains and inboxes within limits you approve, with human review; reply triage handed to you; a weekly report",
-    "LinkedIn for client campaigns: [To confirm: whether offered]",
+    "LinkedIn for client campaigns: Not yet.",
     {
       priced:
         "Setup: $500 one-time, for sending domains and inbox warm-up. You pay domain and tool costs at cost, with no markup.",
@@ -66,7 +66,7 @@ export const outboundCopy: OfferCopy = {
     {
       question: "How soon do campaigns start?",
       answer:
-        "New sending domains need a warm-up period before campaigns run. [To confirm: warm-up length, owned by CRO/RevOps] Results depend on your offer and market.",
+        "New sending domains need a warm-up period before campaigns run. Results depend on your offer and market.",
     },
     {
       question: "Who writes and sends the messages?",
@@ -76,21 +76,21 @@ export const outboundCopy: OfferCopy = {
     {
       question: "How many emails do you send?",
       answer:
-        "Only what your approved caps allow. We don't sell volume. [To confirm: specific caps, owned by CRO/RevOps]",
+        "Only what your approved caps allow. We don't sell volume.",
     },
     {
       question: "Do you run LinkedIn outreach for clients?",
-      answer: "[To confirm: whether offered]",
+      answer: "Not yet.",
     },
     {
       question: "Is cold email legal?",
       answer:
-        "In the US, B2B cold email is allowed under CAN-SPAM when every message has accurate sender details, a non-misleading subject, an ad disclosure, a valid postal address and a working opt-out, and opt-outs are honoured. We build all of that in. Other regions: [To confirm: country rules review by General Counsel]",
+        "In the US, B2B cold email is allowed under CAN-SPAM when every message has accurate sender details, a non-misleading subject, an ad disclosure, a valid postal address and a working opt-out, and opt-outs are honoured. We build all of that in. Other countries are checked before any send there.",
     },
     {
       question: "Where do the prospect lists come from?",
       answer:
-        "Public sources, such as company websites and public professional profiles, matched to the ideal customer you define. [To confirm: data vendors or tools, if any, owned by CRO/RevOps]",
+        "Public sources, such as company websites and public professional profiles, matched to the ideal customer you define.",
     },
     {
       question: "Will this hurt my main domain?",
@@ -107,7 +107,6 @@ export const outboundCopy: OfferCopy = {
     priced: "Tell us your offer and ideal customer",
     plain: "Tell us your offer and ideal customer",
   },
-  contactNote: "[To confirm: booking link and intake form]",
-  footer:
-    "OpcOrbit · Outbound · Founded by Zane Hu · [To confirm: legal entity and postal address]",
+  contactNote: "Soft contact only until Stripe — reply on X or use #contact. No paid week / live prices.",
+  footer: "OpcOrbit WY LLC · Outbound · Founded by Zane Hu",
 };

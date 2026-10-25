@@ -3,8 +3,8 @@ import type { OfferCopy } from "@/lib/copy/types";
 export const devCopy: OfferCopy = {
   heroPrimary: "Book an intro call",
   heroSecondary: {
-    priced: "Start a paid week ($500)",
-    plain: "Start a paid week",
+    priced: "",
+    plain: "",
   },
   benefits: [
     {
@@ -46,13 +46,7 @@ export const devCopy: OfferCopy = {
       priced: "OpcOrbit Dev monthly plan: $2,495/month, USD",
       plain: "",
     },
-    "1 active request at a time. Add as many requests to your queue as you like; fair use applies. [To confirm: fair-use wording]",
-    {
-      priced:
-        "Paid first week: $500, credited to month 1 if you continue. This is a paid week, not a refund trial.",
-      plain:
-        "Paid first week, credited to month 1 if you continue. This is a paid week, not a refund trial.",
-    },
+    "1 active request at a time. Add as many requests to your queue as you like; fair use applies.",
     "No setup fee for our first 2 clients.",
     "Billed monthly by PayPal invoice or subscription, in USD.",
     "Pause or cancel any time. A pause freezes your billing cycle; unused days don't roll over.",
@@ -87,7 +81,7 @@ export const devCopy: OfferCopy = {
     {
       question: "Who owns the code?",
       answer:
-        "You do, once that month is paid. Vendored x-ui code stays under its MIT licence. Full terms: [To confirm: contract terms from General Counsel]",
+        "You own custom code after that month's invoice is paid. Shared x-ui components remain under the MIT license. Canceling ends managed-service access and does not revoke ownership of code already paid for.",
     },
     {
       question: "Can agencies white-label your work?",
@@ -108,11 +102,10 @@ export const devCopy: OfferCopy = {
   ],
   finalPrimary: "Book an intro call",
   finalSecondary: {
-    priced: "Start a paid week ($500, credited to month 1; pricing pending confirmation)",
-    plain: "Start a paid week (credited to month 1; pricing pending confirmation)",
+    priced: "",
+    plain: "",
   },
-  contactNote: "[To confirm: booking link or form]",
-  footer:
-    "OpcOrbit · Dev · Founded by Zane Hu · [To confirm: legal entity and postal address]",
+  contactNote: "Soft contact only until Stripe — reply on X or use #contact. No paid week / live prices.",
+  footer: "OpcOrbit WY LLC · Dev · Founded by Zane Hu",
   externalLink: { label: "See x-ui", href: "https://ui.opcorbit.com" },
 };

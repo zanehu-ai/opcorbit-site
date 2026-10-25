@@ -2,7 +2,7 @@
 
 OpcOrbit's marketing website, hosted on Vercel at https://www.opcorbit.com/. One Next.js static export serves the homepage and four service pages.
 
-Unconfirmed business details remain explicit: every `[To confirm]` / `[待确认]` marker stays visible. Booking links, contract terms, and unapproved prices are not invented. Production pages use live-site copy; the DRAFT banner is shown only by `NEXT_PUBLIC_SITE_BUILD=preview` builds.
+`/dev` and `/outbound` are Soft contact pages: no `[To confirm]` markers, no “Start a paid week” button, and no live checkout. `/creative` and `/support` still show their `[To confirm]` / `[待确认]` markers. Booking links, contract terms, and unapproved prices are not invented. The DRAFT banner is shown only by `NEXT_PUBLIC_SITE_BUILD=preview` builds.
 
 ## Structure
 
@@ -23,7 +23,7 @@ Indexing follows the build type. `NEXT_PUBLIC_SITE_BUILD=preview` (`npm run buil
 ## How to add a page
 
 1. Add an entry to `offers` in `lib/site.ts` (`slug`, `nav`, `hostname`, `path`, `canonical`, `title`, `headline`, `description`). The header, preview directory, and sitemap read that list.
-2. Add the approved copy in `lib/copy/<slug>.ts`. Put every dollar amount in a `PriceText` (`priced` / `plain`) so the price flag can hide it. Keep `[To confirm]` markers in the string.
+2. Add the approved copy in `lib/copy/<slug>.ts`. Put every dollar amount in a `PriceText` (`priced` / `plain`) so the price flag can hide it. Do not add a `[To confirm]` marker on `/dev` or `/outbound`.
 3. Add `app/<slug>/page.tsx`. Export `offerMetadata(offers.<slug>)` and render the landing inside `PageFrame` (the DRAFT banner comes from the frame).
 4. Do not add a booking URL, a payment link, or a legal term that is still marked to confirm. Point the call to action at `#contact` and show the marker there. Creative is the exception for now: its contact button is a bare `mailto:` with no address, labelled `Email us [To confirm]`, until Albert picks the mailbox. Do not invent an address.
 5. Add the future hostname to the table above and to the comment in `wrangler.toml`.
