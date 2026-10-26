@@ -14,6 +14,13 @@ export const metadata: Metadata = {
   },
   description: site.description,
   applicationName: "OpcOrbit",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "16x16 32x32 48x48" },
+      { url: "/brand/icon-32.png", type: "image/png", sizes: "32x32" },
+    ],
+    apple: { url: "/brand/apple-touch-icon.png", sizes: "180x180" },
+  },
   robots: robotsDirective(),
   openGraph: {
     title: site.title,

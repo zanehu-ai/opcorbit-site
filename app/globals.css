@@ -10,6 +10,11 @@ body {
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
+/* The supplied monochrome wordmark follows the existing appearance control. */
+[data-x-ui-theme="dark"] .site-wordmark {
+  filter: invert(1);
+}
+
 .skip-link {
   position: absolute;
   left: 1rem;
