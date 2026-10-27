@@ -75,8 +75,8 @@ export const creativeMonthly = [
 
 export const creativeSteps = [
   "Fit call (15 min, scheduled in your time zone): your products, placements and current creatives.",
-  "Paid pilot: a small first batch for one product. Scope and price (USD): TBD from RevOps 10-22.",
-  "Monthly plan: weekly batches, month to month. Terms: TBD.",
+  "First batch: a small batch for one product. Pricing details will be published once confirmed.",
+  "Monthly plan: weekly batches, month to month.",
 ];
 
 export const creativeNeed =
@@ -85,7 +85,7 @@ export const creativeNeed =
 export const creativeDont = "Media buying, campaign setup, performance guarantees, filmed UGC, logos or websites.";
 
 export const creativeMade = [
-  "A one-person company produces creatives with AI tools and agents. [To confirm: The founder reviews every batch before it's delivered.]",
+  "A one-person company produces creatives with AI tools and agents.",
   "China-based, serving clients async in their time zone.",
   "The samples on this page are labelled “Demo creative — fictional brand”, not client work. We don't have client results to show yet, and we won't make any up.",
 ];
@@ -113,11 +113,9 @@ export const creativeFaqs: Faq[] = [
   },
 ];
 
-/** Bare mailto until Albert picks the address. Do not put a mailbox here. */
-export const creativeContactHref = "mailto:";
+export const creativeContactCta = "Book a fit call";
 
-export const creativeContactCta = "Email us [To confirm]";
+export const creativeContactNote =
+  "Soft contact only until Stripe — reply on X or use #contact. No paid week / live prices.";
 
-export const creativeContactNote = "[To confirm: email address]. Booking link later.";
-
-export const creativeFooter = "OpcOrbit · Creative · Founded by Zane Hu";
+export const creativeFooter = "OpcOrbit WY LLC · Creative · Founded by Zane Hu";

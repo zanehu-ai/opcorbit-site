@@ -18,7 +18,6 @@ import { PageFrame } from "@/components/page-frame";
 import { RichText } from "@/components/rich-text";
 import {
   creativeContactCta,
-  creativeContactHref,
   creativeContactNote,
   creativeDont,
   creativeFaqs,
@@ -48,16 +47,12 @@ export function CreativeLanding() {
         <p className="mt-5 max-w-3xl text-lg leading-8">{meta.description}</p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           <Button asChild size="lg" className="w-full sm:w-auto">
-            <a href={creativeContactHref}>{creativeContactCta}</a>
+            <a href="#contact">{creativeContactCta}</a>
           </Button>
           <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
             <a href="#samples">See concept samples</a>
           </Button>
         </div>
-        <p className="mt-4 text-sm leading-6 text-[color:var(--x-ui-muted-fg)]">PayPal, in USD.</p>
-        <p className="mt-2 text-sm leading-6 text-[color:var(--x-ui-muted-fg)]">
-          <RichText text={creativeContactNote} />
-        </p>
       </section>
 
       <section id="samples" aria-labelledby="samples-title" className="mx-auto w-full max-w-6xl px-4 pb-8 sm:px-6">
@@ -136,7 +131,6 @@ export function CreativeLanding() {
             <li key={item}>{item}</li>
           ))}
         </ul>
-        <p className="mt-4 leading-7">Exact counts per plan: TBD from RevOps 10-22.</p>
       </section>
 
       <section aria-labelledby="steps-title" className="mx-auto w-full max-w-6xl px-4 py-4 sm:px-6">
@@ -209,15 +203,14 @@ export function CreativeLanding() {
 
       <section id="contact" aria-labelledby="contact-title" className="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6">
         <h2 id="contact-title" className="text-2xl font-semibold tracking-tight">
-          Email us
+          Contact
         </h2>
-        <p className="mt-3 text-sm leading-6 text-[color:var(--x-ui-muted-fg)]">PayPal, in USD.</p>
         <div className="mt-6">
           <Button asChild size="lg">
-            <a href={creativeContactHref}>{creativeContactCta}</a>
+            <a href="#contact">{creativeContactCta}</a>
           </Button>
         </div>
-        <p className="mt-5 text-lg leading-8">
+        <p className="mt-5 leading-7">
           <RichText text={creativeContactNote} />
         </p>
       </section>

@@ -54,7 +54,7 @@ export const offers = {
     title: "OpcOrbit Support — A support and lead-capture agent, built and run for you.",
     headline: "A support and lead-capture agent, built and run for you.",
     description:
-      "OpcOrbit sets up an AI agent on your website chat [To confirm: channels at launch, e.g. WhatsApp] that answers your common customer questions and captures leads. Every month we tune it, update what it knows and report to you. When a customer needs a person, it hands off to your team.",
+      "OpcOrbit sets up an AI agent on your website chat that answers your common customer questions and captures leads. Every month we tune it, update what it knows and report to you. When a customer needs a person, it hands off to your team.",
   },
 } as const;
 

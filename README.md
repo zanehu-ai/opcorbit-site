@@ -2,7 +2,7 @@
 
 OpcOrbit's marketing website, hosted on Vercel at https://www.opcorbit.com/. One Next.js static export serves the homepage and four service pages.
 
-`/dev` and `/outbound` are Soft contact pages: no `[To confirm]` markers, no “Start a paid week” button, and no live checkout. `/creative` and `/support` still show their `[To confirm]` / `[待确认]` markers. Booking links, contract terms, and unapproved prices are not invented. The DRAFT banner is shown only by `NEXT_PUBLIC_SITE_BUILD=preview` builds.
+`/dev`, `/outbound`, `/creative`, and `/support` are Soft contact pages: no `[To confirm]` markers, no “Start a paid week” or paid-pilot button, and no live checkout. Booking links, contract terms, and unapproved prices are not invented. The DRAFT banner is shown only by `NEXT_PUBLIC_SITE_BUILD=preview` builds.
 
 ## Structure
 
@@ -23,9 +23,9 @@ Indexing follows the build type. `NEXT_PUBLIC_SITE_BUILD=preview` (`npm run buil
 ## How to add a page
 
 1. Add an entry to `offers` in `lib/site.ts` (`slug`, `nav`, `hostname`, `path`, `canonical`, `title`, `headline`, `description`). The header, preview directory, and sitemap read that list.
-2. Add the approved copy in `lib/copy/<slug>.ts`. Put every dollar amount in a `PriceText` (`priced` / `plain`) so the price flag can hide it. Do not add a `[To confirm]` marker on `/dev` or `/outbound`.
+2. Add the approved copy in `lib/copy/<slug>.ts`. Put every dollar amount in a `PriceText` (`priced` / `plain`) so the price flag can hide it. Do not add a `[To confirm]` marker.
 3. Add `app/<slug>/page.tsx`. Export `offerMetadata(offers.<slug>)` and render the landing inside `PageFrame` (the DRAFT banner comes from the frame).
-4. Do not add a booking URL, a payment link, or a legal term that is still marked to confirm. Point the call to action at `#contact` and show the marker there. Creative is the exception for now: its contact button is a bare `mailto:` with no address, labelled `Email us [To confirm]`, until Albert picks the mailbox. Do not invent an address.
+4. Do not add a booking URL, a payment link, an email address, or a legal term that is still unconfirmed. Point the call to action at `#contact`. The contact note stays soft until Stripe: reply on X or use `#contact`. Do not invent an address.
 5. Add the future hostname to the table above and to the comment in `wrangler.toml`.
 
 ## Price flag
@@ -44,7 +44,7 @@ See `.env.example`. CI runs `npm run build` with prices off, then fails if `\$[0
 
 A raw `grep -R -E '\$[0-9]' out` also matches Next.js RSC row ids (`$2`), style paths (`$0:t:t:...`), minified regex replacements (`$1`), and bytes inside the WebP samples. `scripts/check-prices-off.mjs` applies that regex to HTML with `script` and `style` removed.
 
-Lines that are only a dollar amount disappear when the flag is off. Lines that mix an amount with a term keep the term and drop the amount. `[To confirm: price]` on the support page is a marker, not a number, so it stays either way.
+Lines that are only a dollar amount disappear when the flag is off. Lines that mix an amount with a term keep the term and drop the amount. Creative and Support have no approved dollar amount, so both builds say pricing details will be published once confirmed.
 
 ## x-ui
 

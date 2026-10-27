@@ -17,7 +17,7 @@ export const supportCopy: OfferCopy = {
     },
     {
       title: "A clear hand-off to your people",
-      body: "Any customer who asks for a person, or has a question the agent can't answer, is handed to your staff with the conversation so far. [To confirm: hand-off method per client, e.g. email or your existing inbox]",
+      body: "Any customer who asks for a person, or has a question the agent can't answer, is handed to your staff with the conversation so far.",
     },
     {
       title: "Leads captured, not lost",
@@ -27,8 +27,8 @@ export const supportCopy: OfferCopy = {
   stepsTitle: "How it works",
   steps: [
     "Fit call: your business, your customers' most common questions, and where they reach you.",
-    "Build: you share your FAQs, policies and published information. We build and test the agent, and you review its answers before it goes live. First build in about a week. [To confirm: build time, planned and not yet measured]",
-    "Go live: the agent appears on your website chat [To confirm: channels and install method] and introduces itself as an AI assistant. [To confirm: disclosure wording]",
+    "Build: you share your FAQs, policies and published information. We build and test the agent, and you review its answers before it goes live.",
+    "Go live: the agent appears on your website chat and introduces itself as an AI assistant.",
     "Every month: we review conversations, update the agent's knowledge, tune its answers and send you a report with real numbers only.",
   ],
   panels: [],
@@ -40,12 +40,8 @@ export const supportCopy: OfferCopy = {
   ],
   pricingTitle: "Pricing",
   pricingItems: [
-    "OpcOrbit Support monthly plan: [To confirm: price]",
-    "Setup: [To confirm: setup fee]",
     "Includes: building the agent, monthly tuning, knowledge updates, hand-off to your team, and a monthly report",
-    "Term and notice: [To confirm]",
-    "Payment: [To confirm: PayPal in USD, as for Bets E and F]",
-    "Limited capacity: [To confirm: client cap]",
+    "Pricing details will be published once confirmed.",
   ],
   faqs: [
     {
@@ -64,29 +60,28 @@ export const supportCopy: OfferCopy = {
     },
     {
       question: "Which channels does it work on?",
-      answer: "Your website chat. [To confirm: other channels at launch]",
+      answer: "Your website chat.",
     },
     {
       question: "Which languages?",
-      answer: "[To confirm]",
+      answer: "Not yet. We won't name a language on this page.",
     },
     {
       question: "When is it available?",
-      answer: "[To confirm: availability wording]",
+      answer: "Not yet. We don't promise hours or round-the-clock coverage.",
     },
     {
       question: "Is it clear to customers that it's an AI?",
-      answer: "Yes. It introduces itself as an AI assistant. [To confirm: disclosure wording]",
+      answer: "Yes. It introduces itself as an AI assistant.",
     },
     {
       question: "Who is it for?",
-      answer:
-        "Small businesses and cross-border sellers that answer the same questions all day. [To confirm: first segment at launch]",
+      answer: "Small businesses and cross-border sellers that answer the same questions all day.",
     },
     {
       question: "What happens to my customers' data?",
       answer:
-        "[To confirm: what is collected, where it's stored, how long it's kept and who can access it (General Counsel / CTO)]",
+        "The agent collects only the contact details you ask it to collect, and it answers from the business information you approve. We don't publish storage, retention, or access.",
     },
     {
       question: "Do you work with health practices?",
@@ -106,7 +101,6 @@ export const supportCopy: OfferCopy = {
     priced: "Tell us about your business",
     plain: "Tell us about your business",
   },
-  contactNote: "[To confirm: booking link and intake form]",
-  footer:
-    "OpcOrbit · Support · Founded by Zane Hu · [To confirm: legal entity and postal address]",
+  contactNote: "Soft contact only until Stripe — reply on X or use #contact. No paid week / live prices.",
+  footer: "OpcOrbit WY LLC · Support · Founded by Zane Hu",
 };
