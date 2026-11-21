@@ -26,11 +26,12 @@ const forbiddenTerms = [
   "ad creative",
   "done-for-you",
   "[to confirm]",
+  "32 n gould st",
 ];
 
 const globalRequired = [
   "OpcOrbit LLC",
-  "32 N Gould St, Sheridan, WY 82801",
+  "30 N Gould St Ste R, Sheridan, WY 82801",
   "support@opcorbit.com",
   "/terms/",
   "/privacy/",
