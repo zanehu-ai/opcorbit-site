@@ -1,6 +1,6 @@
 {
   "name": "opcorbit-site",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "engines": {
     "node": ">=22"
@@ -8,20 +8,15 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:preview": "NEXT_PUBLIC_SITE_BUILD=preview NEXT_PUBLIC_SHOW_PRICES=true next build",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "check:compliance": "node scripts/check-compliance.mjs"
   },
   "dependencies": {
-    "@tanstack/react-query": "^5.90.0",
-    "@tanstack/react-table": "^8.21.3",
-    "@zanehu-ai/x-ui": "file:vendor/zanehu-ai-x-ui-0.2.0-rc.0.tgz",
-    "axios": "^1.13.0",
     "lucide-react": "^0.577.0",
     "next": "^16.4.2",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "zustand": "^5.0.8"
+    "react-dom": "^19.2.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.0",

@@ -1,64 +1,176 @@
 export const site = {
+  brandName: "OpcOrbit",
+  productName: "OpcOrbit Cloud",
+  legalEntity: "OpcOrbit LLC",
+  registeredAddress: "32 N Gould St, Sheridan, WY 82801, United States",
+  shortAddress: "32 N Gould St, Sheridan, WY 82801",
+  supportEmail: "support@opcorbit.com",
+  statementDescriptor: "OPCORBIT",
   origin: "https://www.opcorbit.com",
-  title: "OpcOrbit — Development, Outbound, Creative & AI Support",
-  description: "Frontend development, outbound sales, ad creative, and AI support for your team.",
+  effectiveDate: "November 21, 2026",
+  jurisdiction: "State of Wyoming, United States",
+  title: "OpcOrbit Cloud — Workflow Automation & Release Verification SaaS",
+  description:
+    "Cloud workflow automation, approval controls, and release verification software for modern software and operations teams. Operated by OpcOrbit LLC.",
 } as const;
 
-export const offers = {
-  dev: {
-    slug: "dev",
-    nav: "Dev",
-    hostname: "dev.opcorbit.com",
-    path: "/dev/",
-    canonical: `${site.origin}/dev/`,
-    title:
-      "OpcOrbit Dev — Frontend work shipped as pull requests, for one flat monthly fee.",
-    headline: "Frontend work shipped as pull requests, for one flat monthly fee.",
-    description:
-      "OpcOrbit Dev builds React and Next.js pages, components and features in your own repo, one request at a time. AI engineering agents do the build, and a human reviews and approves every delivery. Pause or cancel any time.",
-  },
-  outbound: {
-    slug: "outbound",
-    nav: "Outbound",
-    hostname: "outbound.opcorbit.com",
-    path: "/outbound/",
-    canonical: `${site.origin}/outbound/`,
-    title: "OpcOrbit Outbound — Outbound that starts sales conversations, run for you.",
-    headline: "Outbound that starts sales conversations, run for you.",
-    description:
-      "OpcOrbit Outbound researches best-fit prospects, writes personal cold emails and sends them from your own domains and inboxes, within limits you approve, with a human reviewing the work. Interested replies come to you. Month to month, 30 days' notice.",
-  },
-  creative: {
-    slug: "creative",
-    nav: "Creative",
-    hostname: "creative.opcorbit.com",
-    path: "/creative/",
-    canonical: `${site.origin}/creative/`,
-    title: "OpcOrbit Creative — Fresh ad creatives every week, built from your own product photos.",
-    headline: "Fresh ad creatives every week, built from your own product photos.",
-    description:
-      "A monthly creative service for Shopify brands and agencies already running Meta or TikTok ads. Weekly batches of static ad concepts, sized for each placement, with editable source files you keep.",
-    ogImage: {
-      url: `${site.origin}/samples/01_meta_feed_1080x1080_painpoint_1600w.webp`,
-      width: 1600,
-      height: 1600,
-      alt: "Demo ad for fictional brand Quillfen: a sage-green insulated bottle with a bamboo cap on a cream background, headline \"Lukewarm water by noon?\"",
-    },
-  },
-  support: {
-    slug: "support",
-    nav: "Support",
-    hostname: "support.opcorbit.com",
-    path: "/support/",
-    canonical: `${site.origin}/support/`,
-    title: "OpcOrbit Support — A support and lead-capture agent, built and run for you.",
-    headline: "A support and lead-capture agent, built and run for you.",
-    description:
-      "OpcOrbit sets up an AI agent on your website chat that answers your common customer questions and captures leads. Every month we tune it, update what it knows and report to you. When a customer needs a person, it hands off to your team.",
-  },
-} as const;
+export type PlanId = "starter" | "pro" | "business";
 
-export type OfferSlug = keyof typeof offers;
-export type OfferMeta = (typeof offers)[OfferSlug];
+export type PricingPlan = {
+  id: PlanId;
+  name: string;
+  tagline: string;
+  monthlyPrice: number;
+  annualMonthlyPrice: number;
+  annualTotal: number;
+  popular?: boolean;
+  ctaLabel: string;
+  features: readonly string[];
+};
 
-export const offerList = [offers.dev, offers.outbound, offers.creative, offers.support] as const;
+export const pricingPlans: readonly PricingPlan[] = [
+  {
+    id: "starter",
+    name: "Starter",
+    tagline: "For solo builders and small product teams automating release checks.",
+    monthlyPrice: 29,
+    annualMonthlyPrice: 24,
+    annualTotal: 288,
+    ctaLabel: "Start 14-day trial",
+    features: [
+      "1 cloud workspace",
+      "Up to 3 team members",
+      "Standard workflow automation templates",
+      "30-day immutable audit log retention",
+      "Email support (1 business day response)",
+    ],
+  },
+  {
+    id: "pro",
+    name: "Pro",
+    tagline: "For growing engineering and ops teams needing approval gates and API access.",
+    monthlyPrice: 99,
+    annualMonthlyPrice: 79,
+    annualTotal: 948,
+    popular: true,
+    ctaLabel: "Start 14-day trial",
+    features: [
+      "Unlimited automated workflows",
+      "Up to 15 team members",
+      "REST API & signed webhook integrations",
+      "1-year immutable audit log retention",
+      "Priority email support & billing assistance",
+    ],
+  },
+  {
+    id: "business",
+    name: "Business",
+    tagline: "For multi-team organizations with strict security and governance controls.",
+    monthlyPrice: 299,
+    annualMonthlyPrice: 249,
+    annualTotal: 2988,
+    ctaLabel: "Start 14-day trial",
+    features: [
+      "Unlimited workspaces & team seats",
+      "SAML SSO & granular role-based access (RBAC)",
+      "Custom audit log retention & JSON/CSV export",
+      "Dedicated onboarding & SLA support",
+      "Consolidated annual invoicing available",
+    ],
+  },
+] as const;
+
+export type ComparisonRow = {
+  feature: string;
+  starter: string;
+  pro: string;
+  business: string;
+};
+
+export const comparisonRows: readonly ComparisonRow[] = [
+  {
+    feature: "Cloud workspaces",
+    starter: "1 workspace",
+    pro: "Up to 5 workspaces",
+    business: "Unlimited workspaces",
+  },
+  {
+    feature: "Included team seats",
+    starter: "Up to 3 seats",
+    pro: "Up to 15 seats",
+    business: "Unlimited seats",
+  },
+  {
+    feature: "Automated release checks",
+    starter: "Up to 1,000 runs / mo",
+    pro: "Up to 25,000 runs / mo",
+    business: "Unlimited runs",
+  },
+  {
+    feature: "Multi-stage approval gates",
+    starter: "Single reviewer",
+    pro: "Multi-reviewer rules",
+    business: "Policy-enforced RBAC",
+  },
+  {
+    feature: "Audit log retention",
+    starter: "30 days",
+    pro: "1 year",
+    business: "Custom retention + export",
+  },
+  {
+    feature: "REST API & Webhooks",
+    starter: "Read-only status",
+    pro: "Full API & signed webhooks",
+    business: "Dedicated rate limits & SLA",
+  },
+  {
+    feature: "Authentication & SSO",
+    starter: "Email & OAuth2",
+    pro: "Email, OAuth2 & 2FA",
+    business: "SAML 2.0 SSO & SCIM",
+  },
+  {
+    feature: "Support & refund guarantee",
+    starter: "Email (14-day refund)",
+    pro: "Priority email (14-day refund)",
+    business: "Dedicated SLA (14-day refund)",
+  },
+] as const;
+
+export const billingFaqs = [
+  {
+    question: "What does OpcOrbit Cloud provide?",
+    answer:
+      "OpcOrbit Cloud is a self-serve Software-as-a-Service (SaaS) platform developed and operated by OpcOrbit LLC. Teams subscribe to cloud workspaces to configure automated workflow checks, structured human approval gates, release readiness verification, and immutable audit trails.",
+  },
+  {
+    question: "How are subscriptions billed and what appears on my card statement?",
+    answer:
+      "Subscriptions are billed in USD on a recurring monthly or annual cycle processed securely by Stripe. OpcOrbit LLC never stores raw payment card numbers or CVV codes. Your bank or card statement displays the billing descriptor OPCORBIT.",
+  },
+  {
+    question: "Can I cancel my subscription at any time?",
+    answer:
+      "Yes. You can cancel your subscription at any time by contacting support@opcorbit.com or from your workspace billing settings. When you cancel, your paid access remains active through the end of the current billing period and no further renewal charges are made.",
+  },
+  {
+    question: "What is your refund policy?",
+    answer:
+      "Every new paid subscription includes a 14-day unconditional full refund guarantee from the initial charge date. Duplicate charges or verified billing errors are refunded 100% upon review. Approved refunds are submitted to the original payment method and typically appear within 5 to 10 business days. See our full Refund Policy for details.",
+  },
+  {
+    question: "Does OpcOrbit act as a payment intermediary or handle third-party funds?",
+    answer:
+      "No. OpcOrbit LLC exclusively licenses and sells subscriptions to its own proprietary cloud SaaS software. OpcOrbit does not provide money transmission, third-party payment collection, funds custody, marketplace settlement, or physical fulfillment services, and does not serve embargoed or sanctioned jurisdictions under applicable U.S. OFAC regulations.",
+  },
+] as const;
+
+export const publicRoutes = [
+  "/",
+  "/pricing/",
+  "/contact/",
+  "/terms/",
+  "/privacy/",
+  "/refund/",
+] as const;

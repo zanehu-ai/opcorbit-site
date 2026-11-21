@@ -26,20 +26,8 @@ jobs:
       - name: Typecheck
         run: npm run typecheck
 
-      - name: Build with prices off
+      - name: Build static export
         run: npm run build
 
-      # /\$[0-9]/ on visible HTML. A raw grep of out/ also matches RSC row
-      # ids, minified "$1" replacements, and WebP bytes. See the script.
-      - name: No dollar amounts in the prices-off export
-        run: node scripts/check-prices-off.mjs
-
-      - name: Build preview
-        run: npm run build:preview
-
-      - name: Preview build stays noindex
-        run: |
-          grep -q 'Disallow: /' out/robots.txt
-          grep -q 'noindex' out/index.html
-          grep -q 'noindex' out/dev/index.html
-          grep -q 'noindex' out/creative/index.html
+      - name: Run Stripe & compliance verification
+        run: npm run check:compliance
